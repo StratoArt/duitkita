@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#2f7766" />
+<meta name="description" content="MyFin — catat, kelola, dan pahami keuangan harian." />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="icon.svg" />
+<link rel="stylesheet" href="style.css" />
+<title>MyFin</title>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand"><div class="brandmark">⌁</div><div><strong>MyFin</strong><span>Keuangan lebih tenang</span></div></div>
+    <button class="icon-btn" id="notifBtn" aria-label="Notifikasi">♧</button>
+  </header>
+
+  <main>
+    <section id="home" class="page active">
+      <div class="hello">Halo, <b>Selamat hari ini! 🌻</b></div>
+      <section class="balance-card">
+        <div><span>Saldo tersedia</span><button id="toggleBalance" class="eye">◉</button></div>
+        <h1 id="balance">Rp 9.245.000</h1>
+        <small id="balanceSub">Semua akun</small>
+      </section>
+      <div class="mini-grid">
+        <div class="stat-card income"><span>↗</span><small>Pemasukan</small><b id="incomeTotal">Rp 5.700.000</b></div>
+        <div class="stat-card expense"><span>↘</span><small>Pengeluaran</small><b id="expenseTotal">Rp 3.180.000</b></div>
+        <div class="stat-card save"><span>▣</span><small>Ditabung</small><b id="savingTotal">Rp 1.200.000</b></div>
+      </div>
+      <div class="section-head"><h2>Pengeluaran hari ini</h2><button onclick="showPage('stats')">Lihat semua ›</button></div>
+      <div id="todayList" class="transaction-list"></div>
+      <div class="quote-card">🌿 <span>Disiplin hari ini<br><b>hidup lebih ringan nanti.</b></span></div>
+    </section>
+
+    <section id="stats" class="page">
+      <div class="page-title"><button onclick="showPage('home')">‹</button><h2>Statistik</h2></div>
+      <div class="periods"><button>Hari</button><button>Minggu</button><button class="active">Bulan</button><button>Tahun</button></div>
+      <div class="month-nav"><button>‹</button><b>September 2026</b><button>›</button></div>
+      <div class="summary-grid"><div><small>Pemasukan</small><b>Rp 5.700.000</b></div><div><small>Pengeluaran</small><b>Rp 3.180.000</b></div><div><small>Ditabung</small><b>Rp 1.200.000</b></div><div><small>Sisa</small><b>Rp 1.320.000</b></div></div>
+      <div class="panel"><h3>Pengeluaran per kategori</h3><div class="donut-wrap"><div class="donut"><div><b>Rp 3,18Jt</b><small>total</small></div></div><div class="legend"><span>● Makanan <b>27%</b></span><span>● Belanja <b>20%</b></span><span>● Rumah <b>14%</b></span><span>● Transport <b>11%</b></span><span>● Kesehatan <b>8%</b></span><span>● Lainnya <b>21%</b></span></div></div></div>
+      <div class="panel"><h3>Tren cashflow</h3><div class="bars"><i style="height:75%"></i><i style="height:58%"></i><i style="height:82%"></i><i style="height:62%"></i><i style="height:88%"></i></div><div class="bar-labels"><span>M1</span><span>M2</span><span>M3</span><span>M4</span><span>M5</span></div></div>
+    </section>
+
+    <section id="target" class="page">
+      <div class="page-title"><button onclick="showPage('home')">‹</button><h2>Target Tabungan</h2><button class="plus-mini">+</button></div>
+      <div id="goals"></div>
+      <div class="quote-card">🌱 <span>Tujuan besar dimulai dari<br><b>setoran kecil yang konsisten.</b></span></div>
+    </section>
+
+    <section id="accounts" class="page">
+      <div class="page-title"><button onclick="showPage('home')">‹</button><h2>Akun Saya</h2><button class="icon-btn">⊙</button></div>
+      <p class="muted">Total saldo</p><h1 class="account-total">Rp 9.245.000</h1>
+      <div id="accountsList"></div>
+      <button class="primary full">＋ Tambah Akun</button>
+    </section>
+
+    <section id="more" class="page">
+      <div class="profile"><div class="avatar">🌿</div><div><b>Akun Istri</b><small>Kelola hari ini, untuk masa depan nanti ❤️</small></div></div>
+      <div class="menu-list">
+        <button>⚙️ <span>Pengaturan</span>›</button><button>◫ <span>Budget Bulanan</span>›</button><button>↻ <span>Transaksi Berulang</span>›</button><button>▤ <span>Laporan PDF</span>›</button><button>▣ <span>Ekspor ke Excel</span>›</button><button>◐ <span>Tema (Terang / Gelap)</span>›</button><button>☁ <span>Backup Data</span>›</button>
+      </div>
+      <div class="quote-card">💚 <span>Keuangan yang rapi,<br><b>rumah tangga lebih kuat.</b></span></div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <button class="nav active" data-page="home"><span>⌂</span>Home</button>
+    <button class="nav" data-page="stats"><span>⌁</span>Statistik</button>
+    <button id="addBtn" class="add-btn">＋</button>
+    <button class="nav" data-page="target"><span>♡</span>Target</button>
+    <button class="nav" data-page="more"><span>☰</span>Lainnya</button>
+  </nav>
+</div>
+
+<div id="modal" class="modal hidden"><div class="sheet"><div class="sheet-head"><h2>Tambah Transaksi</h2><button id="closeModal">×</button></div><div class="type-tabs"><button class="active" data-type="expense">Pengeluaran</button><button data-type="income">Pemasukan</button><button data-type="transfer">Transfer</button></div><label>Nominal<input id="amount" inputmode="numeric" placeholder="Rp 0" /></label><label>Kategori<select id="category"><option>Makanan</option><option>Belanja</option><option>Transport</option><option>Rumah</option><option>Kesehatan</option><option>Pendidikan</option><option>Hiburan</option><option>Lainnya</option></select></label><label>Dari (Akun)<select><option>Dompet</option><option>Bank BCA</option><option>E-Wallet</option><option>Tabungan</option></select></label><label>Tanggal<input id="date" type="date" /></label><label>Catatan<input id="note" placeholder="Contoh: Belanja sayur" /></label><button id="saveTx" class="primary full">Simpan</button></div></div>
+<script src="app.js"></script>
+</body></html>
