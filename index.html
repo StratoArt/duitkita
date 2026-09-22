@@ -22,13 +22,13 @@
       <div class="hello">Halo, <b>Selamat hari ini! 🌻</b></div>
       <section class="balance-card">
         <div><span>Saldo tersedia</span><button id="toggleBalance" class="eye">◉</button></div>
-        <h1 id="balance">Rp 9.245.000</h1>
+        <h1 id="balance">Rp 0</h1>
         <small id="balanceSub">Semua akun</small>
       </section>
       <div class="mini-grid">
-        <div class="stat-card income"><span>↗</span><small>Pemasukan</small><b id="incomeTotal">Rp 5.700.000</b></div>
-        <div class="stat-card expense"><span>↘</span><small>Pengeluaran</small><b id="expenseTotal">Rp 3.180.000</b></div>
-        <div class="stat-card save"><span>▣</span><small>Ditabung</small><b id="savingTotal">Rp 1.200.000</b></div>
+        <div class="stat-card income"><span>↗</span><small>Pemasukan</small><b id="incomeTotal">Rp 0</b></div>
+        <div class="stat-card expense"><span>↘</span><small>Pengeluaran</small><b id="expenseTotal">Rp 0</b></div>
+        <div class="stat-card save"><span>▣</span><small>Ditabung</small><b id="savingTotal">Rp 0</b></div>
       </div>
       <div class="section-head"><h2>Pengeluaran hari ini</h2><button onclick="showPage('stats')">Lihat semua ›</button></div>
       <div id="todayList" class="transaction-list"></div>
@@ -38,8 +38,8 @@
     <section id="stats" class="page">
       <div class="page-title"><button onclick="showPage('home')">‹</button><h2>Statistik</h2></div>
       <div class="periods"><button>Hari</button><button>Minggu</button><button class="active">Bulan</button><button>Tahun</button></div>
-      <div class="month-nav"><button>‹</button><b>September 2026</b><button>›</button></div>
-      <div class="summary-grid"><div><small>Pemasukan</small><b>Rp 5.700.000</b></div><div><small>Pengeluaran</small><b>Rp 3.180.000</b></div><div><small>Ditabung</small><b>Rp 1.200.000</b></div><div><small>Sisa</small><b>Rp 1.320.000</b></div></div>
+      <div class="month-nav"><button id="prevMonth">‹</button><b id="monthLabel">Bulan ini</b><button id="nextMonth">›</button></div>
+      <div class="summary-grid"><div><small>Pemasukan</small><b id="statIncome">Rp 0</b></div><div><small>Pengeluaran</small><b id="statExpense">Rp 0</b></div><div><small>Ditabung</small><b id="statSavings">Rp 0</b></div><div><small>Sisa</small><b id="statNet">Rp 0</b></div></div>
       <div class="panel"><h3>Pengeluaran per kategori</h3><div class="donut-wrap"><div class="donut"><div><b>Rp 3,18Jt</b><small>total</small></div></div><div class="legend"><span>● Makanan <b>27%</b></span><span>● Belanja <b>20%</b></span><span>● Rumah <b>14%</b></span><span>● Transport <b>11%</b></span><span>● Kesehatan <b>8%</b></span><span>● Lainnya <b>21%</b></span></div></div></div>
       <div class="panel"><h3>Tren cashflow</h3><div class="bars"><i style="height:75%"></i><i style="height:58%"></i><i style="height:82%"></i><i style="height:62%"></i><i style="height:88%"></i></div><div class="bar-labels"><span>M1</span><span>M2</span><span>M3</span><span>M4</span><span>M5</span></div></div>
     </section>
@@ -60,7 +60,7 @@
     <section id="more" class="page">
       <div class="profile"><div class="avatar">🌿</div><div><b>Akun Istri</b><small>Kelola hari ini, untuk masa depan nanti ❤️</small></div></div>
       <div class="menu-list">
-        <button>⚙️ <span>Pengaturan</span>›</button><button>◫ <span>Budget Bulanan</span>›</button><button>↻ <span>Transaksi Berulang</span>›</button><button>▤ <span>Laporan PDF</span>›</button><button>▣ <span>Ekspor ke Excel</span>›</button><button>◐ <span>Tema (Terang / Gelap)</span>›</button><button>☁ <span>Backup Data</span>›</button>
+        <button id="installBtn" class="install-menu">📲 <span>Install MyFin</span><em id="installStatus">Pasang ke HP ›</em></button><button>⚙️ <span>Pengaturan</span>›</button><button>◫ <span>Budget Bulanan</span>›</button><button>↻ <span>Transaksi Berulang</span>›</button><button>▤ <span>Laporan PDF</span>›</button><button>▣ <span>Ekspor ke Excel</span>›</button><button>◐ <span>Tema (Terang / Gelap)</span>›</button><button>☁ <span>Backup Data</span>›</button>
       </div>
       <div class="quote-card">💚 <span>Keuangan yang rapi,<br><b>rumah tangga lebih kuat.</b></span></div>
     </section>
@@ -75,6 +75,6 @@
   </nav>
 </div>
 
-<div id="modal" class="modal hidden"><div class="sheet"><div class="sheet-head"><h2>Tambah Transaksi</h2><button id="closeModal">×</button></div><div class="type-tabs"><button class="active" data-type="expense">Pengeluaran</button><button data-type="income">Pemasukan</button><button data-type="transfer">Transfer</button></div><label>Nominal<input id="amount" inputmode="numeric" placeholder="Rp 0" /></label><label>Kategori<select id="category"><option>Makanan</option><option>Belanja</option><option>Transport</option><option>Rumah</option><option>Kesehatan</option><option>Pendidikan</option><option>Hiburan</option><option>Lainnya</option></select></label><label>Dari (Akun)<select><option>Dompet</option><option>Bank BCA</option><option>E-Wallet</option><option>Tabungan</option></select></label><label>Tanggal<input id="date" type="date" /></label><label>Catatan<input id="note" placeholder="Contoh: Belanja sayur" /></label><button id="saveTx" class="primary full">Simpan</button></div></div>
+<div id="modal" class="modal hidden"><div class="sheet"><div class="sheet-head"><h2>Tambah Transaksi</h2><button id="closeModal">×</button></div><div class="type-tabs"><button class="active" data-type="expense">Pengeluaran</button><button data-type="income">Pemasukan</button><button data-type="transfer">Transfer</button></div><label>Nominal<input id="amount" inputmode="numeric" placeholder="Rp 0" /></label><label>Kategori<select id="category"></select></label><label>Dari (Akun)<select id="account"></select></label><label id="toAccountWrap" class="hidden">Ke (Akun)<select id="toAccount"></select></label><label>Tanggal<input id="date" type="date" /></label><label>Catatan<input id="note" placeholder="Contoh: Belanja sayur" /></label><button id="saveTx" class="primary full">Simpan</button></div></div>
 <script src="app.js"></script>
 </body></html>

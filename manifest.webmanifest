@@ -1,1 +1,14 @@
-{"name":"MyFin","short_name":"MyFin","start_url":"./","display":"standalone","background_color":"#fbf8f5","theme_color":"#2f7766","description":"Catat dan kelola keuangan keluarga dengan sederhana.","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
+{
+  "name":"MyFin — Keuangan Keluarga",
+  "short_name":"MyFin",
+  "start_url":"./",
+  "scope":"./",
+  "display":"standalone",
+  "orientation":"portrait",
+  "background_color":"#fbf8f5",
+  "theme_color":"#2f7766",
+  "description":"Catat, kelola, dan pahami keuangan harian dengan sederhana.",
+  "icons":[
+    {"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
