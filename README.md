@@ -1,2 +1,0 @@
-# duitkita
-tracking money
